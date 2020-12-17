@@ -84,8 +84,10 @@ public class MusicOrganizer
     }
     
     public void listAllFiles() {
+        int posicion = 0;
         for (String filename : files) {
-            System.out.println(filename);
+            posicion++;
+            System.out.println(posicion + ". " + filename);
         }
     }   
 }
