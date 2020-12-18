@@ -89,5 +89,14 @@ public class MusicOrganizer
             posicion++;
             System.out.println(posicion + ". " + filename);
         }
-    }   
+    } 
+    
+    public void listMatching(String searchString) {
+        int error = 0;
+        for(String filename : files) {
+            if (filename.contains(searchString)) {
+                System.out.println(filename);
+            }
+        }
+    }
 }
