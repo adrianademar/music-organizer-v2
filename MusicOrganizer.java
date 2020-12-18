@@ -96,7 +96,11 @@ public class MusicOrganizer
         for(String filename : files) {
             if (filename.contains(searchString)) {
                 System.out.println(filename);
+                   error++;
             }
+        }
+        if (error == 0) {
+            System.out.println("No hay coincidencias");
         }
     }
 }
