@@ -103,4 +103,16 @@ public class MusicOrganizer
             System.out.println("No hay coincidencias");
         }
     }
+    public void playSamplesArtist(String artista) {
+        int error = 0;
+        for(String filename : files) {
+            if (filename.contains(artista)) {
+                player.playSample(filename);
+                error++;
+            }
+        }
+        if (error == 0) {
+            System.out.println("No hay coincidencias");
+        }
+    }
 }
