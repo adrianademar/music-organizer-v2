@@ -115,4 +115,16 @@ public class MusicOrganizer
             System.out.println("No hay coincidencias");
         }
     }
+    public void deleteSongsWithText(String texto) {
+        int error = 0;
+        for(String filename : files) {
+            if (filename.contains(texto)) {
+                files.remove(filename);
+                error++;
+            }
+        }
+        if (error == 0) {
+            System.out.println("No hay coincidencias");
+        }
+    }
 }
