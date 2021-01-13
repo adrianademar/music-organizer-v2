@@ -85,12 +85,12 @@ public class MusicOrganizer
     
     public void listAllFiles() {
         int posicion = 0;
-        for (String filename : files) {
+        while (posicion < files.size()) {
+            String filename = files.get(posicion);
+            System.out.println(filename);
             posicion++;
-            System.out.println(posicion + ". " + filename);
-        }
-    } 
-    
+        } 
+    }
     public void listMatching(String searchString) {
         int error = 0;
         for(String filename : files) {
@@ -108,18 +108,6 @@ public class MusicOrganizer
         for(String filename : files) {
             if (filename.contains(artista)) {
                 player.playSample(filename);
-                error++;
-            }
-        }
-        if (error == 0) {
-            System.out.println("No hay coincidencias");
-        }
-    }
-    public void deleteSongsWithText(String texto) {
-        int error = 0;
-        for(String filename : files) {
-            if (filename.contains(texto)) {
-                files.remove(filename);
                 error++;
             }
         }
