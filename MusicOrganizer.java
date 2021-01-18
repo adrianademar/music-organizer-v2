@@ -13,7 +13,7 @@ public class MusicOrganizer
     private ArrayList<String> files;
     // A player for the music files.
     private MusicPlayer player;
-        
+
     /**
      * Create a MusicOrganizer
      */
@@ -22,7 +22,7 @@ public class MusicOrganizer
         files = new ArrayList<String>();
         player = new MusicPlayer();
     }
-    
+
     /**
      * Add a file to the collection.
      * @param filename The file to be added.
@@ -31,7 +31,7 @@ public class MusicOrganizer
     {
         files.add(filename);
     }
-    
+
     /**
      * Return the number of files in the collection.
      * @return The number of files in the collection.
@@ -40,7 +40,7 @@ public class MusicOrganizer
     {
         return files.size();
     }
-    
+
     /**
      * List a file from the collection.
      * @param index The index of the file to be listed.
@@ -52,7 +52,7 @@ public class MusicOrganizer
             System.out.println(filename);
         }
     }
-    
+
     /**
      * Remove a file from the collection.
      * @param index The index of the file to be removed.
@@ -82,7 +82,7 @@ public class MusicOrganizer
     {
         player.stop();
     }
-    
+
     public void listAllFiles() {
         int posicion = 0;
         while (posicion < files.size()) {
@@ -91,18 +91,20 @@ public class MusicOrganizer
             posicion++;
         } 
     }
+
     public void listMatching(String searchString) {
         int error = 0;
         for(String filename : files) {
             if (filename.contains(searchString)) {
                 System.out.println(filename);
-                   error++;
+                error++;
             }
         }
         if (error == 0) {
             System.out.println("No hay coincidencias");
         }
     }
+
     public void playSamplesArtist(String artista) {
         int error = 0;
         for(String filename : files) {
@@ -113,6 +115,31 @@ public class MusicOrganizer
         }
         if (error == 0) {
             System.out.println("No hay coincidencias");
+        }   
+    }
+
+    /**
+     * Localiza el índice del primer archivo que se corresponde con
+     * la cadena de búsqueda indicada .
+     * @param searchString La cadena que hay que buscar.
+     * @return El índice de la primera aparición o -1 si
+     * no se encuentra ninguna correspondencia
+     */
+
+    public int findFirst(String searchString) {
+        int index = 0;
+        boolean busqueda = true;
+        while(index < files.size() && busqueda) {
+            String filename = files.get(index);
+            if (filename.contains(searchString)) {
+                busqueda = false;
+            } else {
+                index++;
+            }
         }
+        if (busqueda) {
+            index= -1;
+        }
+        return index;
     }
 }
